@@ -1,7 +1,7 @@
 const ChatList=()=>{
     return(
         <div>
-            <div className="chat-block">
+            <div className="sidebar-list-item">
                 <div className="user-avatar"></div>
                 dsdvsf
             </div>

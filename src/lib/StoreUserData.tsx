@@ -9,7 +9,6 @@ interface UserStore {
     addUser: (user: UserData) => void; 
 }
 
-// Создаем хранилище Zustand
 const useStoreUserData = create<UserStore>((set) => ({
     userData: null,
     addUser: (user) => set({ userData: user }), 

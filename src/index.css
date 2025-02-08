@@ -1,5 +1,7 @@
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
 
 }
 body{
@@ -32,15 +34,13 @@ body{
   background-color: white;
 }
 .main{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
+  height: 100dvh;
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(2,1fr);
 }
 .sidebar{
+  justify-items: center;
   grid-column-start: 1;
   grid-row-start: span 2;
   width: 400px;
@@ -87,14 +87,15 @@ body{
 }
 .chatContainer{
   width: 100%;
-  height: 100vh;
+  height: auto;
   overflow: scroll;
   overflow-x: hidden;
+  padding-top: 5%;
 }
-.my-message{
+.message{
     text-align: center;
     position: relative;
-    left: 60vw;
+    left: 50vw;
     width: 200px;
     min-height: 30px;
     height: auto;
@@ -102,27 +103,21 @@ body{
     background-color: rgb(78, 76, 76);
     color: white;
     font-weight: 600;
+    margin: 20px;
 }
-.theirs-message{
-  text-align: center;
-  position: relative;
+.message-foreign{
   left: 1vw;
-  width: 200px;
-  min-height: 30px;
-  height: auto;
-  border-radius: 40px;
-  background-color: rgb(78, 76, 76);
-  color: white;
-  font-weight: 600;
 }
-.chat-block{
-  width: 100%;
+.sidebar-list-item{
+  width: 300px;
   height: 50px;
   border: 1px solid black;
+  border-radius: 30px;
   cursor: pointer;
-  display: flexbox;
-  justify-content: center;
-  align-content: center;
+  display: flex;
+  gap: 40px;
+  padding-left: 40px;
+  align-items: center;
   color: white;
   font-weight: 700;
 }

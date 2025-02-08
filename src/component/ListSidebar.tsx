@@ -1,9 +1,13 @@
 import ChatList from "./ChatList"
-
-const ListSidebar=()=>{
+import ContactList from "./ContactList"
+interface PropsType{
+    chatlist:boolean,
+    contactList:boolean
+}
+const ListSidebar:React.FC<PropsType>=({chatlist,contactList})=>{
     return(
         <div>
-            <ChatList />
+            {chatlist==true? <ChatList/>  : <ContactList/>}
         </div>
     )
 }

@@ -1,12 +1,43 @@
-import MessageForm from "./MessageForm"
-import MessageInChat from "./MessageInChat"
+import Message from "./Message";
+import MessageForm from "./MessageForm";
 
-const Chat=()=>{
-    return(
-        <div className="chat">
-             <MessageInChat />
-             <MessageForm />
-        </div>
-    )
+interface MessageData {
+  foreign: boolean;
+  message: string;
 }
-export default Chat 
+
+const Chat = () => {
+  const MogData: MessageData[] = [
+    {
+      foreign: false,
+      message: "123",
+    },
+    {
+      foreign: false,
+      message: "123",
+    },
+    {
+      foreign: false,
+      message: "123",
+    },
+    {
+      foreign: false,
+      message: "123",
+    },
+    {
+      foreign: false,
+      message: "123",
+    },
+  ];
+
+  return (
+    <div className="chat">
+      {MogData.map((item, index) => (
+        <Message key={index} foreign={item.foreign} message={item.message} />
+      ))}
+      <MessageForm />
+    </div>
+  );
+};
+
+export default Chat;
