@@ -9,7 +9,7 @@ interface MessageData {
 const Chat = () => {
   const MogData: MessageData[] = [
     {
-      foreign: false,
+      foreign: true,
       message: "123",
     },
     {
@@ -17,7 +17,7 @@ const Chat = () => {
       message: "123",
     },
     {
-      foreign: false,
+      foreign: true,
       message: "123",
     },
     {
@@ -25,11 +25,10 @@ const Chat = () => {
       message: "123",
     },
     {
-      foreign: false,
+      foreign: true,
       message: "123",
     },
   ];
-
   return (
     <div className="chat">
       {MogData.map((item, index) => (
