@@ -1,17 +1,17 @@
 import {create} from "zustand"
 
-interface UserData {
-    id: number;
+interface UserDataType {
+    id: string;
 }
 
 interface UserStore {
-    userData: UserData | null; 
-    addUser: (user: UserData) => void; 
+    userIdStore: UserDataType | null; 
+    setuserIdStore: (user: UserDataType) => void; 
 }
 
 const useStoreUserData = create<UserStore>((set) => ({
-    userData: null,
-    addUser: (user) => set({ userData: user }), 
+    userIdStore: null,
+    setuserIdStore: (id) => set({ userIdStore: id }), 
 }));
 
 export default useStoreUserData
