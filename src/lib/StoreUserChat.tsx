@@ -1,10 +1,19 @@
-/*import {create} from "zustand"
-import useStoreUserData from "./StoreUserData"
+import { create } from "zustand"
+
 interface ChatData{
-    userId:userData,
-    message:string,
-    time:Date
+    userId: string,
+    message: string,
+    time: Date
 }
+
 interface StoreChat{
-    ChatData:ChatData
-}*/
+    chats: ChatData[],
+    addChat: (chat: ChatData) => void
+}
+
+const useStoreChat = create<StoreChat>((set) => ({
+    chats: [],
+    addChat: (chat) => set((state) => ({ chats: [...state.chats, chat] })),
+}))
+
+export default useStoreChat
