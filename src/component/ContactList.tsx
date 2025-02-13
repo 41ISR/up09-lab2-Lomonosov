@@ -8,15 +8,15 @@ const ContactList: React.FC = () => {
     const { userIdStore } = useStoreUser();
 
     return (
-        <div>
-            <h2>Список Контактов</h2>
-            <ul>
+        <div className="flex flex-col items-center justify-center">
+            <h2 className="text-2xl font-bold ">Список Контактов</h2>
+            <ul className='relative top-24'>
                 {contacts.contacts.map((contact: any) => ( 
-                    <li key={contact.userId} className="contact-list-item">
+                    <li key={contact.userId} className="flex items-center justify-center w-40 border border-black rounded-lg p-2 cursor-pointer">
                         <strong>{contact.name}</strong>
-                        <button 
-                            onClick={() => userIdStore?.id && addChat(userIdStore.id, contact.userId)}
-                            disabled={!userIdStore?.id}
+                        <button className="border font-bold  rounded-lg p-2 cursor-pointer"
+                            onClick={() => userIdStore && addChat(userIdStore.id, contact.userId)}
+                            disabled={!userIdStore}
                         >
                             Создать чат
                         </button>

@@ -2,37 +2,31 @@ import Message from "./Message";
 import MessageForm from "./MessageForm";
 
 interface MessageData {
-  foreign: boolean;
   message: string;
 }
 
 const Chat = () => {
   const MogData: MessageData[] = [
     {
-      foreign: true,
-      message: "123",
+      message: "123"
     },
     {
-      foreign: false,
-      message: "123",
+      message: "123"
     },
     {
-      foreign: true,
-      message: "123",
+      message: "123"
     },
     {
-      foreign: false,
-      message: "123",
+      message: "123"
     },
     {
-      foreign: true,
-      message: "123",
+      message: "123"
     },
   ];
   return (
-    <div className="chat">
+    <div className="col-start-2 col-end-4 row-start-1 row-end-6 h-auto">
       {MogData.map((item, index) => (
-        <Message key={index} foreign={item.foreign} message={item.message} />
+        <Message key={index}  message={item.message} />
       ))}
       <MessageForm />
     </div>

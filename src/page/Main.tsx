@@ -9,7 +9,7 @@ const Main=()=>{
       console.log(response)
    })
     return(
-       <div className="main">
+         <div className="grid grid-cols-4 grid-rows-1">
           <Sidebar />
           <Chat />
        </div>

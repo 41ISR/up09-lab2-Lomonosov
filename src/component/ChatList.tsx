@@ -13,8 +13,8 @@ const ChatList: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2>Список Чатов</h2>
+        <div className="flex flex-col items-center justify-center">
+            <h2 className="text-2xl font-bold">Список Чатов</h2>
             <ul>
                 {chats.map((chat) => {
                     const secondUser = chat.messages.find(msg => msg.userId !== userIdStore?.id);
@@ -22,12 +22,11 @@ const ChatList: React.FC = () => {
                     return (
                         <li 
                             key={chat.id} 
-                            className={`sidebar-list-item ${activeChatId === chat.id ? 'active' : ''}`} 
+                            className={'flex items-center justify-center w-24 border border-black rounded-lg p-2 cursor-pointer'} 
                             onClick={() => handleChatClick(chat.id)}
                         >
                             {secondUser && (
                                 <>
-                                    <div className="user-avatar"></div>
                                     <strong>{secondUser.userId}</strong> 
                                 </>
                             )}

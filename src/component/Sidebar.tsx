@@ -8,12 +8,12 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const [contactList, setContactList] = useState<boolean>(false);
 
   return (
-    <div className="sidebar">
-      <div className="sidebar-link">
-        <button className="sidebar-chat" onClick={() => {setChatlist(true),setContactList(false)}}>
+    <div className="col-start-1 col-end-2 row-start-1 row-end-6 w-full h-screen bg-stone-500">
+      <div className="flex  items-center justify-center gap-20 mt-4">
+        <button className="w-24 border border-black rounded-lg p-2 cursor-pointer" onClick={() => {setChatlist(true),setContactList(false)}}>
           Чаты
         </button>
-        <button className="sidebar-contact" onClick={() => {setContactList(true),setChatlist(false) }}>
+        <button className="w-24 border border-black rounded-lg p-2 cursor-pointer" onClick={() => {setContactList(true),setChatlist(false) }}>
           Контакты
         </button>
       </div>

@@ -1,30 +1,30 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import useStoreUserData from "../lib/StoreUserData"
+import useStoreUser from "../lib/StoreUserData"
 import axios from "axios"
 const LogInForm = () => {
-    const {setuserIdStore} = useStoreUserData()
+    const {  setuserIdStore: setGlobalUserId } = useStoreUser()
     const navigate = useNavigate()
-    const [userId,setUserId]=useState<string>("") 
+    const [inputUserId, setInputUserId] = useState<string>("")
     async function handleSubmit(){
         try{ 
-            const response= await axios.post("https://api.ktkv.dev/login",{"id":userId})
-            //setuserIdStore(response);
-            const arrayResponse=Object.values(response.data)
-            const strResponce=arrayResponse.toString()
-            setuserIdStore({id:strResponce})
+            const response = await axios.post("https://api.ktkv.dev/login", {"id": inputUserId})
+            const arrayResponse = Object.values(response.data)
+            const strResponse = arrayResponse.toString()
+            setGlobalUserId({ id: strResponse })
             navigate("./main")
-        }catch(error: any){
+        } catch(error: any) {
             console.error("Ошибка при отправке запроса:", error.message); 
         }   
     }
     return (
-        <div className="log-form">
+        <div className="h-96 flex flex-col items-center justify-center">
             <input 
             type="text" 
-            onChange={(e)=>setUserId(e.target.value)}
+            onChange={(e)=>setInputUserId(e.target.value)}
+            className="border border-black rounded-lg p-2"
             />
-            <button onClick={handleSubmit}>Войти</button>
+            <button onClick={handleSubmit} className="mt-4 border border-black rounded-lg p-2">Войти</button>
         </div>
     )
 }
