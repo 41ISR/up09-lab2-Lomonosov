@@ -10,7 +10,7 @@ interface UserStore {
 }
 
 const useStoreUserData = create<UserStore>((set) => ({
-    userIdStore: null,
+    userIdStore: localStorage.getItem('userId') ? { id: localStorage.getItem('userId') as string } : null,
     setuserIdStore: (id) => set({ userIdStore: id }), 
 }));
 
