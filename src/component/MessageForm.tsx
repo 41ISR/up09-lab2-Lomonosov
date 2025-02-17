@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('');
+const socket = io('https://api.ktkv.dev/private_message/');
 
 const MessageForm = () => {
     const [message, setMessage] = useState('');

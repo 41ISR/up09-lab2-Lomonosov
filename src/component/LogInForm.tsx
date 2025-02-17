@@ -3,7 +3,7 @@ import { useState } from "react"
 import useStoreUser from "../lib/StoreUserData"
 import axios from "axios"
 const LogInForm = () => {
-    const {  setuserIdStore: setGlobalUserId } = useStoreUser()
+    const { setUserIdStore: setGlobalUserId } = useStoreUser()
     const navigate = useNavigate()
     const [inputUserId, setInputUserId] = useState<string>("")
     async function handleSubmit(){
