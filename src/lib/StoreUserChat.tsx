@@ -1,11 +1,11 @@
 import { create } from "zustand"
 
+
 interface MessageData {
     userId: string;
     message: string;
     time: Date;
 }
-
 interface Chat {
     id: string; 
     messages: MessageData[]; 

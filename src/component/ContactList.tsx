@@ -13,7 +13,7 @@ const ContactList: React.FC = () => {
             <ul className='relative top-24'>
                 {contacts.contacts.map((contact: any) => ( 
                     <li key={contact.userId} className="flex items-center justify-center w-40 border border-black rounded-lg p-2 cursor-pointer">
-                        <strong>{contact.name}</strong>
+                        <strong>{contact.userId}</strong>
                         <button className="border font-bold  rounded-lg p-2 cursor-pointer"
                             onClick={() => userIdStore && addChat(userIdStore.id, contact.userId)}
                             disabled={!userIdStore}

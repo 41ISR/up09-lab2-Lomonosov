@@ -1,7 +1,7 @@
 {
     "contacts": [
-        { "name": "Иван Иванов", "userId": "ivan123" },
-        { "name": "Мария Петрова", "userId": "maria456" },
-        { "name": "Сергей Сидоров", "userId": "sergey789" }
+        {  "userId": "ivan123" },
+        {  "userId": "maria456" },
+        {  "userId": "sergey789" }
     ]
 }
