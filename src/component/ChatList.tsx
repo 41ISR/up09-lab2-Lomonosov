@@ -16,7 +16,7 @@ const ChatList: React.FC = () => {
             <h2 className="text-2xl font-bold">Список Чатов</h2>
             <ul className="mt-4">
                 {chats.map((chat, index) => (
-                    <li key={index} className="border border-gray-300 rounded p-2 mb-2 cursor-pointer">
+                    <li key={index} className="border border-gray-300 rounded p-2 mb-2 ">
                         <span>{chat.toUserId}</span>
                     </li>
                 ))}

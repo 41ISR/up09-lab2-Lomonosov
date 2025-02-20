@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { socket } from "./Chat";
-import useMessageStore from "../lib/StoreUserChat";
+import useMessageStore from "../lib/StoreUserMessage";
 
 const MessageForm = () => {
     const [message, setMessage] = useMessageStore();
