@@ -5,10 +5,11 @@ const Auth = () => {
     const navigate=useNavigate()
     const { userIdStore } = useStoreUser(); 
     useEffect(()=>{
+          console.log(userIdStore)
           if(!userIdStore){
             navigate('/login')
           }
-    })
+    },[userIdStore,navigate])
     return (
         <Outlet />
     )

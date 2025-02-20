@@ -10,8 +10,8 @@ const socket = io("https://api.ktkv.dev/", {
     transports: ["websocket", "polling"],
 })
 const ContactList: React.FC = () => {
-
-    const { addChat } = useStoreChat();
+    
+    const { addMessage } = useStoreChat();
     const { userIdStore } = useStoreUser();
     const { users, setUsers } = useUsersData()
 
@@ -19,7 +19,6 @@ const ContactList: React.FC = () => {
         socket.on("users", (newUsers) => {
             setUsers(newUsers)
         })
-
         return () => {
             socket.off("users")
             console.log("Users array on unmount:", users);
@@ -29,7 +28,17 @@ const ContactList: React.FC = () => {
     useEffect(() => {
         console.log("Users array after update:", users);
     }, [users]);
-  
+    const handleCreateChat = (recipientId: string) => {
+        if (userIdStore) {
+            const firstMessage = {
+                from: userIdStore.id,
+                to: recipientId,
+                message: "",
+                timestamp: new Date().toISOString(),
+            };
+            addMessage(firstMessage);
+        }
+    };
     return (
         <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-bold ">Список Контактов</h2>
@@ -40,7 +49,7 @@ const ContactList: React.FC = () => {
                         <li key={index} className="flex items-center justify-center w-40 border border-black rounded-lg p-2 cursor-pointer">
                             <strong>{user.id}</strong>
                             <button className="border font-bold  rounded-lg p-2 cursor-pointer"
-                                onClick={() => userIdStore && addChat(userIdStore.id, user.id)}
+                                onClick={() => handleCreateChat(user.id)} 
                                 disabled={!userIdStore}
                             >
                                 Создать чат

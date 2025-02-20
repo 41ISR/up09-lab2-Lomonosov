@@ -4,7 +4,7 @@ import useStoreUser from '../lib/StoreUserData';
 import useStoreActiveChat from '../lib/StoreActiveChat';
 
 const ChatList: React.FC = () => {
-    const { chats } = useStoreChat();
+    const { messages } = useStoreChat();
     const { userIdStore } = useStoreUser();
     const {setActiveChat} =useStoreActiveChat()
     const handleChatClick = (chatId: string) => {
@@ -20,13 +20,13 @@ const ChatList: React.FC = () => {
         <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-bold">Список Чатов</h2>
             <ul>
-                {chats.map((chat) => {
-                    const userId = userIdStore?.id && (userIdStore.id === chat.userId1 ? chat.userId2 : chat.userId1);
+                {messages.map((chat) => {
+                    const userId = userIdStore?.id && (userIdStore.id === chat.from ? chat.to : chat.from);
                     return (
                         <li
-                            key={chat.id}
+                            key={chat.to}
                             className="flex items-center justify-center w-24 h-24 border border-black rounded-lg p-2 cursor-pointer"
-                            onClick={() => handleChatClick(chat.id)}
+                            onClick={() => handleChatClick(chat.to)}
                         >
                             {userId}
                         </li>

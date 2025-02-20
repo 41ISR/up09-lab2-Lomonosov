@@ -1,32 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { io } from 'socket.io-client';
-
-const socket = io('https://api.ktkv.dev/private_message/');
+import useMessageStore from "../lib/StoreUserChat";
 
 const MessageForm = () => {
-    const [message, setMessage] = useState('');
-
+    const socket = io("https://api.ktkv.dev/"); 
+    const [message, setMessage] = useMessageStore();
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const recipientId = 'recipientId'; 
-        const timestamp = new Date().toISOString();
-        socket.emit('private_message', { to: recipientId, message, timestamp });
-        setMessage(''); 
+        e.preventDefault(); 
+        if (message.trim()) {
+            socket.emit("private_message", message); 
+            setMessage(''); 
+        }
     };
-
-    useEffect(() => {
-        return () => {
-            socket.disconnect();
-        };
-    }, []);
-
     return (
-        <form action="" className="relative top-3/4 w-full" onSubmit={handleSubmit}>
+        <form className="relative top-3/4 w-full" onSubmit={handleSubmit}>
             <input 
                 type="text" 
                 value={message} 
                 onChange={(e) => setMessage(e.target.value)} 
                 className="w-full border-2 border-black p-2" 
+                placeholder="Введите ваше сообщение..."
             />
             <input 
                 type="submit" 
@@ -36,4 +29,5 @@ const MessageForm = () => {
         </form>
     );
 }
+
 export default MessageForm;

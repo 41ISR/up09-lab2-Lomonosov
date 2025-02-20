@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { io } from "socket.io-client"
+import { useState,useEffect } from "react"
 import useStoreUser from "../lib/StoreUserData"
 import axios from "axios"
 const LogInForm = () => {
@@ -12,11 +13,19 @@ const LogInForm = () => {
             const arrayResponse = Object.values(response.data)
             const strResponse = arrayResponse.toString()
             setGlobalUserId({ id: strResponse })
-            navigate("./main")
+            localStorage.setItem('userId',strResponse)
+            navigate("/")
         } catch(error: any) {
             console.error("Ошибка при отправке запроса:", error.message); 
         }   
     }
+    const socket =io('https://api.ktkv.dev')
+    useEffect(()=>{
+      const userId=localStorage.getItem("userId")
+      if(userId){
+         socket.emit("register", userId);
+      }
+    })
     return (
         <div className="h-96 flex flex-col items-center justify-center">
             <input 
