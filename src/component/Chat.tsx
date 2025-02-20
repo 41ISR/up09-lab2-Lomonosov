@@ -1,6 +1,13 @@
 //import { useState,useEffect } from "react";
+import { io } from "socket.io-client";
 import Message from "./Message";
 import MessageForm from "./MessageForm";
+
+export const socket = io("https://api.ktkv.dev/", {
+  withCredentials: true,
+  transports: ["websocket", "polling"],
+})
+
 const Chat = () => {
   //const {chats} = useStoreChat()
   return (

@@ -2,15 +2,13 @@ import { io } from "socket.io-client";
 import { useState, useEffect } from 'react';
 import useStoreUser from '../lib/StoreUserData';
 import useUsersData from "../lib/StoreUsersData";
+import useStoreActiveChat from "../lib/StoreActiveChat";
+import { socket } from "./Chat";
 
-
-const socket = io("https://api.ktkv.dev/", {
-    withCredentials: true,
-    transports: ["websocket", "polling"],
-})
 const ContactList: React.FC = () => {
-    const { userIdStore } = useStoreUser();
+    const { userIdStore } = useStoreUser()
     const { users, setUsers } = useUsersData()
+    const {setActiveChat}=useStoreActiveChat()
     useEffect(() => {
         socket.on("users", (newUsers) => {
             setUsers(newUsers)
@@ -19,12 +17,12 @@ const ContactList: React.FC = () => {
             socket.off("users")
             console.log("Users array on unmount:", users);
         }
-    }, [users]); 
+    }, []); 
     useEffect(() => {
         console.log("Users array after update:", users);
     }, [users]);
-    const handleCreateChat=(toId)=>{
-         
+    const handleCreateChat=(toId:string)=>{
+        setActiveChat(toId)
     }
     return (
         <div className="flex flex-col items-center justify-center">

@@ -1,13 +1,19 @@
 import { create } from 'zustand';
 
 interface ChatState {
-    toUserId: string | null;
-    setActiveChat: (id: string) => void;
+  toUserId: string; 
 }
 
-const useStoreActiveChat = create<ChatState>((set) => ({
-    toUserId: null,
-    setActiveChat: (id: string) => set({ toUserId: id })
+interface ActiveChatsState { 
+  chats: ChatState[];
+  setActiveChat: (userId: string) => void; 
+}
+
+const useStoreActiveChat = create<ActiveChatsState>((set) => ({ 
+  chats: [],
+  setActiveChat: (userId) => set((state) => ({
+    chats: [...state.chats, { toUserId: userId }]
+  }))
 }));
 
-export default useStoreActiveChat; 
+export default useStoreActiveChat;

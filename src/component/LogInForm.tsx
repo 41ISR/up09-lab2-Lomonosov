@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { io } from "socket.io-client"
+import { socket } from "./Chat";
 import { useState,useEffect } from "react"
 import useStoreUser from "../lib/StoreUserData"
 import axios from "axios"
@@ -19,7 +19,6 @@ const LogInForm = () => {
             console.error("Ошибка при отправке запроса:", error.message); 
         }   
     }
-    const socket =io('https://api.ktkv.dev')
     useEffect(()=>{
       const userId=localStorage.getItem("userId")
       if(userId){

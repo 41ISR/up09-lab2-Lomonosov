@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { io } from 'socket.io-client';
+import { socket } from "./Chat";
 import useMessageStore from "../lib/StoreUserChat";
 
 const MessageForm = () => {
-    const socket = io("https://api.ktkv.dev/"); 
     const [message, setMessage] = useMessageStore();
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault(); 
