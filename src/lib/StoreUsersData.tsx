@@ -5,12 +5,10 @@ interface UserData {
     id: string;
     socketId:string
 }
-
 interface UsersDataState {
     users: UserData[];  
     setUsers: (users: UserData[]) => void;
 }
-
 const useUsersData = create<UsersDataState>((set) => ({
     users: [],
     setUsers: (users) => set({ users: users }),

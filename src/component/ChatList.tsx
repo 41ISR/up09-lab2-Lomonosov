@@ -11,11 +11,10 @@ const ChatList: React.FC = () => {
         setActiveChat(chatId)
         console.log(`Чат с ID ${chatId} активирован`);
     };
-
     useEffect(() => {
         console.log(userIdStore);
+        console.log(messages)
     }, [userIdStore]); 
-
     return (
         <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-bold">Список Чатов</h2>
