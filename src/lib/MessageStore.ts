@@ -13,7 +13,6 @@ interface MessageStoreState {
   setMessages: (messages: Message[]) => void;
 }
 
-
 const useMessageStore = create<MessageStoreState>((set) => ({
   messages: [],
   addMessage: (message) => set((state) => {

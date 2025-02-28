@@ -1,15 +1,15 @@
 import { Outlet, useNavigate} from "react-router-dom"
 import { useEffect } from "react"
-import useStoreUser from '../lib/StoreUserData';
+import useStoreUser from '../lib/UserStore';
 const Auth = () => {
     const navigate=useNavigate()
-    const { userIdStore } = useStoreUser(); 
+    const { user } = useStoreUser(); 
     useEffect(()=>{
-          console.log(userIdStore)
-          if(!userIdStore){
+          console.log(user)
+          if(!user){
             navigate('/login')
           }
-    },[userIdStore,navigate])
+    },[user,navigate])
     return (
         <Outlet />
     )
