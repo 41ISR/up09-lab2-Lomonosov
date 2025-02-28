@@ -30,7 +30,7 @@ const useUserStore = create<UserStoreState>((set) => ({
       const response = await axios.get("http://localhost:3000/users");
       set({ users: response.data });
     } catch (error) {
-      console.error("Error fetching users:", error);
+      console.error("Ошибка при получении пользователей:", error);
     }
   },
 }));

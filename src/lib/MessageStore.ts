@@ -17,7 +17,7 @@ const useMessageStore = create<MessageStoreState>((set) => ({
   messages: [],
   addMessage: (message) => set((state) => {
     if (!message.to) {
-      console.error("Message is missing 'to' field:", message);
+      console.error("Сообщение не имеет поля 'to':", message);
       return state;
     }
     return { messages: [...state.messages, message] };

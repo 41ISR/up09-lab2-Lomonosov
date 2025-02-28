@@ -7,7 +7,7 @@ const Auth = () => {
     useEffect(()=>{
           console.log(user)
           if(!user){
-            navigate('/login')
+            navigate('/')
           }
     },[user,navigate])
     return (
